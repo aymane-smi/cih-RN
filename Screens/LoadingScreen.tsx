@@ -2,32 +2,37 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import Animated, { withDelay, withTiming, useSharedValue, useAnimatedStyle, SharedValue } from "react-native-reanimated";
 import { useEffect } from "react";
+import { LinearGradient } from "expo-linear-gradient";
 export default function LoadingScreen(){
-    const imageValue = useSharedValue(300);
-    const textValue = useSharedValue(300);
+    const imageValue = useSharedValue(400);
+    const textValue = useSharedValue(400);
+    const opacityValue = useSharedValue(0); 
 
     const imageAnimation = useAnimatedStyle(()=>({
         transform: [{
-            translateY: imageValue,
+            translateY: imageValue.value,
         }],
+        opacity: opacityValue.value,
     }));
     const textAnimation = useAnimatedStyle(()=>({
         transform: [{
-            translateY: imageValue,
+            translateY: imageValue.value,
         }],
+        opacity: opacityValue.value,
     }));
 
     useEffect(()=>{
-        imageValue.value = withTiming(0, {duration: 1000});
-        textAnimation.value = withDelay(1000, withTiming(0, {duration: 1000}));
+        imageValue.value = withTiming(0, {duration: 1500});
+        textValue.value = withDelay(1000, withTiming(0, {duration: 1500}));
+        opacityValue.value = withTiming(1, {duration: 1500});
     },[]);
     const [fontsLoaded] = useFonts({
         "Poppins-Thin": require("../assets/Poppins/Poppins-Thin.ttf"),
     })
-    return (<View style={styles.container}>
+    return (<LinearGradient style={styles.container} colors={['#f5e5e0', '#dde7eb', '#f5e5e0']} end={{ x: 0.9, y: 0.7 }}>
         <Animated.Image style={[styles.image, imageAnimation]} source={require("../assets/logo.png")}/>
         <Animated.Text style={[styles.text, textAnimation]}>La banque de demain dès aujourd'hui</Animated.Text>
-    </View>)
+    </LinearGradient>)
 }
 
 const styles = StyleSheet.create({
