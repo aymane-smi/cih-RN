@@ -28,7 +28,7 @@ export default function LoadingScreen(){
     },[]);
     const [fontsLoaded] = useFonts({
         "Poppins-Thin": require("../assets/Poppins/Poppins-Thin.ttf"),
-    })
+    });
     return (<LinearGradient style={styles.container} colors={['#f5e5e0', '#dde7eb', '#f5e5e0']} end={{ x: 0.9, y: 0.7 }}>
         <Animated.Image style={[styles.image, imageAnimation]} source={require("../assets/logo.png")}/>
         <Animated.Text style={[styles.text, textAnimation]}>La banque de demain dès aujourd'hui</Animated.Text>

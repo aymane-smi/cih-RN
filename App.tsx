@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LoadingScreen from './Screens/LoadingScreen';
+import Login from './Screens/Login';
 
 export default function App() {
   return (
-    <LoadingScreen />
+    <Login />
   );
 }
 
