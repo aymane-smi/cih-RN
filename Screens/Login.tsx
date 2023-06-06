@@ -3,7 +3,8 @@ import { Dimensions, Image, StatusBar, StyleSheet, Text, TextInput, TouchableOpa
 import { useFonts } from "expo-font";
 import { useState } from "react";
 import Checkbox from "expo-checkbox";
-import {Entypo} from "@expo/vector-icons"
+import {Entypo} from "@expo/vector-icons";
+import * as LocalAuthentication from "expo-local-authentication";
 
 export default function Login(){
     const [fontsLoaded] = useFonts({
@@ -13,6 +14,14 @@ export default function Login(){
     });
     const [first, setFirst] = useState<boolean>(false);
     const [second, setSecond] = useState<boolean>(false);
+
+    const handleBiometric = async()=>{
+        await LocalAuthentication.authenticateAsync({
+            promptMessage: "use your fingerprint to connect to your account!",
+            disableDeviceFallback: true,
+            cancelLabel: "cancel",
+        })
+    }
     return (
         <LinearGradient style={styles.container} colors={['#f5e5e0', '#dde7eb', '#f5e5e0']} end={{ x: 0.9, y: 0.7 }}>
             <StatusBar/>
@@ -40,7 +49,7 @@ export default function Login(){
                 <TouchableOpacity style={styles.signButton}>
                     <Text style={{ color: "white", }}>Sign In</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.fingerPrint}>
+                <TouchableOpacity style={styles.fingerPrint} onPress={handleBiometric}>
                     <Entypo name="fingerprint" size={24} color="white" />
                 </TouchableOpacity>
             </View>
