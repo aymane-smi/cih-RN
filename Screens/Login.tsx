@@ -6,7 +6,7 @@ import Checkbox from "expo-checkbox";
 import {Entypo} from "@expo/vector-icons";
 import * as LocalAuthentication from "expo-local-authentication";
 
-export default function Login(){
+export default function Login({login, layout}){
     const [fontsLoaded] = useFonts({
         "Poppins-Bold": require("../assets/Poppins/Poppins-Bold.ttf"),
         "Poppins-Light": require("../assets/Poppins/Poppins-Light.ttf"),
@@ -16,14 +16,16 @@ export default function Login(){
     const [second, setSecond] = useState<boolean>(false);
 
     const handleBiometric = async()=>{
-        await LocalAuthentication.authenticateAsync({
+        const {success} = await LocalAuthentication.authenticateAsync({
             promptMessage: "use your fingerprint to connect to your account!",
             disableDeviceFallback: true,
             cancelLabel: "cancel",
-        })
+        });
+        if(success)
+            login(true);
     }
     return (
-        <LinearGradient style={styles.container} colors={['#f5e5e0', '#dde7eb', '#f5e5e0']} end={{ x: 0.9, y: 0.7 }}>
+        <LinearGradient style={styles.container} colors={['#f5e5e0', '#dde7eb', '#f5e5e0']} end={{ x: 0.9, y: 0.7 }} onLayout={layout}>
             <StatusBar/>
             <Image style={[styles.icon]} source={require("../assets/icon-cih.png")}/>
             <Text style={styles.sign}>Sign In</Text>
