@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Home from './Screens/Home/Home';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
+import DrawerProvider from './Drawer';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -47,9 +48,7 @@ export default function App() {
   }
 
   return(
-    <NavigationContainer>
-      {!loggedIn ? <Login layout={onLayoutRootView} login={setLogin}/> : <Home/>}
-    </NavigationContainer>
+       <DrawerProvider />
   );
 }
 
