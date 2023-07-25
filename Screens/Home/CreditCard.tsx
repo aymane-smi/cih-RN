@@ -7,11 +7,11 @@ import Card3 from "../../assets/Card 3.svg";
 
 export const CreditCard = ()=>{
     const data = [
-        {id: "1", component: <Card1 height={300} width={300} style={{padding: 0, marginHorizontal: -10}}/>},
-        {id: "2", component: <Card2 height={300} width={300} style={{padding: 0, marginHorizontal: -10}}/>},
-        {id: "3", component: <Card3 height={300} width={300} style={{padding: 0, marginHorizontal: -10}}/>}
+        {id: "1", component: <Card1 height={350} width={350} style={{marginHorizontal: -10}}/>},
+        {id: "2", component: <Card2 height={350} width={350} style={{marginHorizontal: -10}}/>},
+        {id: "3", component: <Card3 height={350} width={350} style={{marginHorizontal: -10}}/>}
     ];
-    const renderItem = ({item})=>{
+    const renderItem = ({item}: any)=>{
         return item.component;
     }
     return <FlatList 
@@ -19,11 +19,14 @@ export const CreditCard = ()=>{
                 keyExtractor={(item) => item.id}
                 renderItem={renderItem}
                 horizontal
-                centerContent
-                snapToAlignment="center"
-                decelerationRate="fast"
                 initialScrollIndex={1}
                 showsHorizontalScrollIndicator={false}
-                style={{height: 300}}
+                style={{
+                    flexGrow: 0,
+                    // borderColor: "black",
+                    // borderWidth: 5,
+                    padding: 0,
+                    marginVertical: -50
+                }}
             />
 }

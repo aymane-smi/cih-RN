@@ -24,7 +24,10 @@ export default function Login({login, layout}){
         if(success)
             login(true);
     }
-    return (
+    if(!fontsLoaded)
+        return null;
+    else
+        return (
         <LinearGradient style={styles.container} colors={['#f5e5e0', '#dde7eb', '#f5e5e0']} end={{ x: 0.9, y: 0.7 }} onLayout={layout}>
             <StatusBar/>
             <Image style={[styles.icon]} source={require("../assets/icon-cih.png")}/>

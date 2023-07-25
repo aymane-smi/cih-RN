@@ -1,27 +1,66 @@
 import { Feather, Fontisto, Foundation, Ionicons, Octicons } from "@expo/vector-icons";
 import { View, Image, StyleSheet, Text } from "react-native";
 import { CreditCard } from "./CreditCard";
+import { LinearGradient } from "expo-linear-gradient";
+import { Activites } from "./Activities";
 
 export default function Home(){
-    return (<View style={styles.container}>
+    return (<LinearGradient style={styles.container} colors={['#f5e5e0', '#dde7eb', '#f5e5e0']} end={{ x: 0.9, y: 0.7 }}>
         <View style={styles.header}>
                 <Feather name="menu" size={30} color="#5f6f8d" />
                 <Image source={require("../../assets/icon-cih.png")} style={{width: 50, height: 50}}/>
                 <Octicons name="bell" size={25} color="#5f6f8d" />
         </View>
         <CreditCard />
+        {/* OPTIONS */}
         <View style={styles.optionContainer}>
-            <View style={styles.option}>
-                <Fontisto name="wallet" size={24} color="#bac4d0" />
+            {/* btn 1 */}
+            <View style={{
+                width: 70
+            }}>
+                <View style={styles.option}>
+                    <Fontisto name="wallet" size={30} color="#5f6f8d"/>
+                </View>
+                <Text style={{
+                    textAlign: "center",
+                    color:"#5f6f8d",
+                    marginTop: 5
+                }}>Send Money</Text>
             </View>
-            <View style={styles.option}>
-                <Foundation name="graph-pie" size={24} color="#bac4d0" />
+            {/* btn 2 */}
+            <View style={{
+                width: 70
+            }}>
+                <View style={styles.option}>
+                    <Foundation name="graph-pie" size={30} color="#5f6f8d"/>
+                </View>
+                <Text style={{
+                    textAlign: "center",
+                    color:"#5f6f8d",
+                    marginTop: 5
+                }}>Account Statistic</Text>
             </View>
-            <View style={styles.option}>
-                <Ionicons name="md-newspaper-outline" size={24} color="#bac4d0"/>
+            {/* btn 3 */}
+            <View style={{
+                width: 70
+            }}>
+                <View style={styles.option}>
+                    <Ionicons name="md-newspaper-outline" size={30} color="#5f6f8d"/>
+                </View>
+                <Text style={{
+                    textAlign: "center",
+                    color:"#5f6f8d",
+                    marginTop: 5
+                }}>Pay</Text>
+                <Text style={{
+                    textAlign: "center",
+                    color:"#5f6f8d",
+                }}>Bills</Text>
             </View>
         </View>
-    </View>);
+        {/* ACTIVITES */}
+        <Activites />
+        </LinearGradient>);
 }
 
 
@@ -37,11 +76,13 @@ const styles = StyleSheet.create({
          width: "100%"
     },
     option:{
-        padding: 30,
+        flexDirection: "row",
+        justifyContent:"center",
+        alignItems: "center",
         borderRadius: 20,
         backgroundColor: "white",
-        width: 24,
-        height: 24,
+        width: 70,
+        height: 70,
     },
     optionContainer:{
         flexDirection: "row",

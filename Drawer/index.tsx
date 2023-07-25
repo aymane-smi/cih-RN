@@ -6,6 +6,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { AntDesign, Feather, FontAwesome, Ionicons } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import Transaction from "../assets/transaction.svg";
+import Account from "../Screens/Account";
 
 export default function DrawerProvider(){
     const [fontsLoaded] = useFonts({
@@ -47,7 +48,7 @@ export default function DrawerProvider(){
                 ),
                 drawerLabel: "Home",
             }}/>
-            <Drawer.Screen name="Account" component={Home} options={{
+            <Drawer.Screen name="Account" component={Account} options={{
                 
                 drawerIcon: ({color})=>(
                     <Ionicons name="person-outline" size={24} color={color} />

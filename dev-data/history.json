@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Netflix Subsription",
+        "price": 290,
+        "status": "down"
+    },
+    {
+        "id": 2,
+        "title": "Audience Network",
+        "price": 2400,
+        "status": "up"
+    },
+    {
+        "id": 3,
+        "title": "Amazon",
+        "price": 100,
+        "status": "down"
+    },
+    {
+        "id": 4,
+        "title": "Spotify",
+        "price": 43,
+        "status": "down"
+    }
+]
